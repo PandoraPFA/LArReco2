@@ -15,10 +15,12 @@
         <FilteredCaloHitListName>CaloHitList2D</FilteredCaloHitListName>
         <CurrentCaloHitListReplacement>CaloHitList2D</CurrentCaloHitListReplacement>
     </algorithm>
+
     <algorithm type = "LArVisualMonitoring">
         <CaloHitListNames>CaloHitListU CaloHitListV CaloHitListW</CaloHitListNames>
         <ShowDetector>true</ShowDetector>
     </algorithm>
+
 
     <algorithm type = "LArMaster">
         <CRSettingsFile>PandoraSettings_Cosmic_Standard.xml</CRSettingsFile>
@@ -33,16 +35,28 @@
         </CosmicRayTaggingTools>
         <SliceIdTools>
             <tool type = "LArSvmNeutrinoId">
-                <MvaFileName>PandoraSvm_v03_11_00.xml</MvaFileName>
-                <MvaName>NeutrinoId</MvaName>
+                <MvaFileName>PandoraSvm_TrackDirectionTool.xml</MvaFileName>
+                <MvaName>TrackDirectionToolSvm</MvaName>
             </tool>
         </SliceIdTools>
         <InputHitListName>CaloHitList2D</InputHitListName>
+	<InputMCParticleListName>Input</InputMCParticleListName>
+	<PassMCParticlesToWorkerInstances>true</PassMCParticlesToWorkerInstances>
         <RecreatedPfoListName>RecreatedPfos</RecreatedPfoListName>
         <RecreatedClusterListName>RecreatedClusters</RecreatedClusterListName>
         <RecreatedVertexListName>RecreatedVertices</RecreatedVertexListName>
         <VisualizeOverallRecoStatus>false</VisualizeOverallRecoStatus>
+	<ClusterListName>RecreatedClusters</ClusterListName>
+	<PfoListName>RecreatedPfos</PfoListName>
+	<TrackDirection>
+	  <tool type = "LArTrackDirectionTool">
+	    <SlidingFitWindow>20</SlidingFitWindow>
+	    <MinClusterCaloHits>20</MinClusterCaloHits>
+	    <MinClusterLength>10.f</MinClusterLength>
+	  </tool>
+	</TrackDirection>
     </algorithm>
+
 
     <algorithm type = "LArNeutrinoEventValidation">
         <CaloHitListName>CaloHitList2D</CaloHitListName>
@@ -60,4 +74,5 @@
         <ShowCurrentPfos>true</ShowCurrentPfos>
         <ShowDetector>true</ShowDetector>
     </algorithm>
+
 </pandora>
